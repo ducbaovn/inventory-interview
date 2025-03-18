@@ -1,0 +1,17 @@
+version: '2.1'
+services:
+  postgres:
+    image: postgres:12-alpine
+    ports:
+      - 5432:5432
+    networks:
+      - internal
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=inventory_user
+      - POSTGRES_DB=inventory_service
+    volumes:
+      - ${PWD}/local/postgres:/var/lib/postgresql/data
+
+networks:
+  internal:
