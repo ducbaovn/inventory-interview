@@ -8,7 +8,7 @@ export default [
     languageOptions: {
       parser: tsparser,
       sourceType: 'module',
-      ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
+      ecmaVersion: 2024,
     },
     plugins: {
       '@typescript-eslint': tseslint,

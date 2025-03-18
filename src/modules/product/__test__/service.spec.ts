@@ -77,6 +77,7 @@ describe('ProductService', () => {
       expect(product.yearOfManufacture).toBe(galaxyS8.yearOfManufacture);
 
       const productDB = await service.getProduct(product.id);
+      expect(productDB).toBeDefined();
       expect(productDB.id).toBe(product.id);
       expect(productDB.name).toBe(galaxyS8.name);
       expect(productDB.brandId).toBe(samsung.id);
@@ -306,6 +307,10 @@ describe('ProductService', () => {
       it('filter status=INACTIVE', async () => {
         const count = await service.countProducts({ status: ProductStatusEnum.INACTIVE });
         expect(count).toBe(1);
+      });
+      it('filter brand=samsung', async () => {
+        const count = await service.countProducts({ brandId: samsung.id });
+        expect(count).toBe(3);
       });
     });
   });
